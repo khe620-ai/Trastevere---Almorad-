@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+locale: "es"
+
+collections:
+  - name: "menu_dia"
+    label: "Menú del día"
+    description: "Cambia cada día las dos imágenes del menú: español e inglés."
+    files:
+      - label: "Menús de hoy"
+        name: "actual"
+        file: "content/menu-dia.json"
+        fields:
+          - label: "🇪🇸 Menú de hoy · Español"
+            name: "imagenEs"
+            widget: "image"
+            required: true
+            hint: "Sube aquí el cartel del menú en español."
+          - label: "🇬🇧 Today's Menu · English"
+            name: "imagenEn"
+            widget: "image"
+            required: true
+            hint: "Sube aquí el cartel del menú en inglés."
+          - label: "Precio de martes a viernes"
+            name: "precioSemana"
+            widget: "string"
+            default: "13,50 €"
+          - label: "Días de martes a viernes"
+            name: "diasSemana"
+            widget: "string"
+            default: "MARTES · MIÉRCOLES · JUEVES · VIERNES"
+          - label: "Precio de fin de semana"
+            name: "precioFinDeSemana"
+            widget: "string"
+            default: "19 €"
+          - label: "Días de fin de semana"
+            name: "diasFinDeSemana"
+            widget: "string"
+            default: "SÁBADOS · DOMINGOS"
+          - label: "Texto inferior"
+            name: "nota"
+            widget: "text"
+            default: "Los platos disponibles cambian cada día. Consulta nuestro menú actualizado."
