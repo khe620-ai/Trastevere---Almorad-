@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menú del día · Trastevere</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0d0c0b;font-family:Arial,sans-serif;color:#fff}.wrap{max-width:1100px;margin:auto;background:#f5efe4;min-height:100vh}.header{padding:24px 18px 10px;text-align:center;background:#0d0c0b;color:#f2d18a}.header h1{margin:0;font-family:Georgia,serif;font-size:32px;letter-spacing:1px}.header p{margin:7px 0 0;color:#ddd;font-size:14px}.switch{background:#0d0c0b;padding:12px 18px 18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.tab{border:1px solid #b9964d;background:#191817;color:#f2d18a;border-radius:11px;padding:13px;text-align:center;font-weight:800;font-size:14px;cursor:pointer}.tab.active{background:#c7a45a;color:#111}.visual-wrap{padding:18px;background:#111}.visual{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:14px;background:#0b0b0b}.info{padding:22px 18px;background:#f5efe4;color:#1b1816;text-align:center}.info h2{margin:0 0 16px;font-family:Georgia,serif;font-size:25px;letter-spacing:1px}.prices{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:850px;margin:auto}.price{background:#111;border:1px solid #b9964d;border-radius:15px;padding:18px;color:#fff}.price .days{color:#f2d18a;font-weight:800;font-size:13px;line-height:1.4}.price .amount{font-family:Georgia,serif;color:#fff;font-size:31px;font-weight:800;margin-top:8px}.note{margin:18px auto 0;max-width:760px;color:#5f584f;line-height:1.5;font-size:14px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px;background:#111}.btn{display:block;text-align:center;padding:15px;border-radius:11px;text-decoration:none;font-weight:800}.gold{background:#c7a45a;color:#111}.dark{background:#191817;color:#fff;border:1px solid #b9964d}.back{display:block;margin:0 18px 25px;padding:14px;text-align:center;text-decoration:none;background:#a8172b;color:#fff;border-radius:11px;font-weight:800}.hidden{display:none}@media(max-width:650px){.prices{grid-template-columns:1fr}.actions{grid-template-columns:1fr}.header h1{font-size:27px}.visual-wrap{padding:12px}.switch{padding-left:12px;padding-right:12px}.tab{font-size:12px;padding:12px 7px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="header"><h1>MENÚ DEL DÍA</h1><p>Trastevere Ristorante · Almoradí</p></header>
+  <div class="switch">
+    <button id="tabEs" class="tab active" type="button">🇪🇸 MENÚ · ESPAÑOL</button>
+    <button id="tabEn" class="tab" type="button">🇬🇧 MENU · ENGLISH</button>
+  </div>
+  <section class="visual-wrap">
+    <img id="menuEs" class="visual" src="/uploads/menu-es.jpg" alt="Menú del día en español">
+    <img id="menuEn" class="visual hidden" src="/uploads/menu-en.jpg" alt="Today's menu in English">
+  </section>
+  <section class="info">
+    <h2>MENÚ DEL DÍA</h2>
+    <div class="prices">
+      <div class="price"><div id="diasSemana" class="days">MARTES · MIÉRCOLES · JUEVES · VIERNES</div><div id="precioSemana" class="amount">13,50 €</div></div>
+      <div class="price"><div id="diasFinDeSemana" class="days">SÁBADOS · DOMINGOS</div><div id="precioFinDeSemana" class="amount">19 €</div></div>
+    </div>
+    <p id="nota" class="note">Los platos disponibles cambian cada día. Consulta nuestro menú actualizado.</p>
+  </section>
+  <section class="actions"><a class="btn gold" href="https://wa.me/34671117218?text=Hola%20Trastevere%2C%20quiero%20reservar%20para%20el%20men%C3%BA%20del%20d%C3%ADa" target="_blank" rel="noopener">RESERVAR MENÚ DEL DÍA</a><a class="btn dark" href="contacto.html">CONTACTO</a></section>
+  <a class="back" href="index.html">← VOLVER A TRASTEVERE</a>
+</main>
+<script>
+(async function(){
+  const es=document.getElementById('menuEs'), en=document.getElementById('menuEn');
+  function show(lang){const isEs=lang==='es';es.classList.toggle('hidden',!isEs);en.classList.toggle('hidden',isEs);document.getElementById('tabEs').classList.toggle('active',isEs);document.getElementById('tabEn').classList.toggle('active',!isEs);}
+  document.getElementById('tabEs').onclick=()=>show('es');document.getElementById('tabEn').onclick=()=>show('en');
+  try{const r=await fetch('/content/menu-dia.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const d=await r.json();
+    if(d.imagenEs)es.src=d.imagenEs+(d.imagenEs.includes('?')?'&':'?')+'v='+Date.now();
+    if(d.imagenEn)en.src=d.imagenEn+(d.imagenEn.includes('?')?'&':'?')+'v='+Date.now();
+    if(d.precioSemana)document.getElementById('precioSemana').textContent=d.precioSemana;if(d.diasSemana)document.getElementById('diasSemana').textContent=d.diasSemana;if(d.precioFinDeSemana)document.getElementById('precioFinDeSemana').textContent=d.precioFinDeSemana;if(d.diasFinDeSemana)document.getElementById('diasFinDeSemana').textContent=d.diasFinDeSemana;if(d.nota)document.getElementById('nota').textContent=d.nota;
+  }catch(e){}
+})();
+</script>
+</body></html>

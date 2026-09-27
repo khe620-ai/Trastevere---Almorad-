@@ -1,0 +1,19 @@
+TRASTEVERE — MENÚ DEL DÍA EN ESPAÑOL + INGLÉS
+
+La web muestra dos menús:
+🇪🇸 Menú de hoy · Español
+🇬🇧 Today's Menu · English
+
+Los carteles actuales están en:
+/uploads/menu-es.jpg
+/uploads/menu-en.jpg
+
+IMPORTANTE SOBRE LOS CAMBIOS DIARIOS:
+Netlify Drop sirve para publicar archivos, pero no permite que el panel web guarde cambios por sí solo. Para que puedas entrar en /admin/ y cambiar las dos imágenes desde el móvil sin volver a subir toda la web, este paquete está preparado para Decap CMS + Netlify Git Gateway.
+
+Una vez conectado el proyecto a un repositorio Git (por ejemplo GitHub) y activado el acceso de CMS, entrarás en:
+https://trastevere-almoradi.netlify.app/admin/
+
+Allí aparecerá “Menú del día” y podrás sustituir la imagen española y la inglesa y pulsar Publish. Netlify publicará automáticamente el cambio.
+
+Si mantienes Netlify Drop, la web funcionará y mostrará los dos menús actuales, pero los cambios diarios tendrán que publicarse subiendo de nuevo la web con los archivos actualizados.

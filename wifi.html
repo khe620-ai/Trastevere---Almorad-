@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trastevere · Wi-Fi</title>
+<style>
+body{margin:0;background:#f3eee5;color:#171717;font-family:Georgia,serif}.wrap{max-width:520px;margin:auto;min-height:100vh;background:#fbf7ee;text-align:center;padding:35px 20px;box-sizing:border-box}
+.logo{font-size:35px;font-weight:700;letter-spacing:3px}.sub{font:12px Arial;letter-spacing:4px;margin-top:5px}.line{width:65px;height:1px;background:#c7a45a;margin:20px auto}
+.card{background:white;border:1px solid #ddd0bb;border-radius:20px;padding:24px;box-shadow:0 8px 25px #0001;margin-top:25px}.btn{display:block;width:100%;box-sizing:border-box;padding:15px;border:0;border-radius:12px;margin-top:14px;font-weight:700;font-size:16px}.wifi{background:#087443;color:white}.review{background:#a8172b;color:white;text-decoration:none}.pw{display:none;margin-top:14px;padding:15px;border:1px dashed #aaa;border-radius:12px}.pw strong{display:block;font:700 24px Arial;margin:8px}.copy{border:0;border-radius:8px;padding:9px 13px;font-weight:700}.back{display:block;margin-top:25px;color:#555;font:13px Arial}
+</style></head><body><main class="wrap"><div class="logo">TRASTEVERE</div><div class="sub">RISTORANTE · ALMORADÍ</div><div class="line"></div>
+<div class="card"><h2>Benvenuto!</h2><p>Conéctate al Wi-Fi de Trastevere.</p>
+<button class="btn wifi" onclick="showWifi()">📶 VER CONTRASEÑA WI-FI</button>
+<div id="pw" class="pw">Contraseña Wi-Fi<strong id="pass">trastevere2014</strong><button class="copy" onclick="copyPass()">COPIAR CONTRASEÑA</button></div>
+<a class="btn review" href="https://search.google.com/local/writereview?placeid=ChIJNQZIxQKlY0ROxTUple_1F0&utm_source=chatgpt.com" target="_blank">★ DEJAR RESEÑA EN GOOGLE</a>
+<a class="btn dark" href="https://www.google.com/maps/search/?api=1&query=Trastevere+Ristorante+Italiano+Almorad%C3%AD" target="_blank">📍 CÓMO LLEGAR</a></div><a class="back" href="index.html">← Volver a Trastevere</a></main>
+<script>
+function showWifi(){document.getElementById('pw').style.display='block'}
+function copyPass(){navigator.clipboard?.writeText(document.getElementById('pass').textContent);event.target.textContent='¡COPIADA!';setTimeout(()=>event.target.textContent='COPIAR CONTRASEÑA',1500)}
+</script></body></html>
